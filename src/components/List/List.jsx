@@ -1,19 +1,24 @@
 import './List.css'
 
 //components
+import { useState } from 'react';
+
+//Components
 import BirthdayUser from "../BirthdayUser/BirthdayUser";
 
 //hook
-import { FetchData } from '../../hooks/fetchdata';
+import FetchData from '../../hooks/Fetchdata';
 
 
 const List = () => {
 
-    const {users} = FetchData()
+    const {data, loading, error} = FetchData();
+    console.log(data)
 
     return (
         <div className='List'>
-            <BirthdayUser data={'hello'}/>
+            {data.map(user => <BirthdayUser key={user.id} data={user}/> )}
+            
         </div>
     )
 }

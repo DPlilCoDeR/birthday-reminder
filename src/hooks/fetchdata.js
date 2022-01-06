@@ -1,22 +1,25 @@
 import { useEffect, useState } from "react";
 
 
-export const FetchData = async () =>{
-    const [data, setData] = useState('')
-
+const FetchData = () =>{
+    const [data, setData] = useState([])
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(false);
+    
     const getData = async () => {
         try {
-            const data = await (await fetch('https://jsonplaceholder.typicode.com/users')).json();
-            console.log(data);    
+            const fetchingData = await (await fetch('https://jsonplaceholder.typicode.com/users')).json();
+            setData(fetchingData);
         } catch (error) {
-            
+            setError(true)
         }
-        
+        setLoading(false)
     }
-    
     useEffect(() => {
-        getData()
+        getData();
     }, []);
 
-    return data;
-}
+    return {data, loading, error};
+};
+
+export default FetchData;
