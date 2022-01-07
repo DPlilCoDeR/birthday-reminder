@@ -1,7 +1,6 @@
 
 
 const BirthdayUser = ({user}) => {
-    console.log(user)
     return(
         <div className='person'>
         <img src={user.image} alt='birthday user'/>

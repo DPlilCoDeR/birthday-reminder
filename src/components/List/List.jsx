@@ -1,4 +1,3 @@
-import './List.css'
 import { useState } from 'react'
 
 //Components
